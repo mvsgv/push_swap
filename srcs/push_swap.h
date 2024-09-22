@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:44:02 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 16:52:55 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:33:07 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int					stack_len(t_stack *stack);
 t_stack				*find_min(t_stack *stack);
 t_stack				*find_max(t_stack *stack);
 int				ft_atoi(const char *str);
+void	find_target_b(t_stack *a, t_stack *b);
 
 /*//errors//*/
 int					syntax_errors(char *str);
@@ -86,4 +87,7 @@ void				free_stack(t_stack **stack);
 void				free_errors(t_stack **a);
 void				my_index(t_stack *stack);
 
+void print_stack(t_stack *stack, char *stack_name);
+
 #endif
+

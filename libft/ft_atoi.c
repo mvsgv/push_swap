@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:26:16 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 16:36:37 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:28:30 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,29 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 		res = res * 10 + (str[i++] - 48);
 	return (res * neg);
+}
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		l;
+	int		l2;
+	int		ct;
+	char	*str;
+
+	l2 = ft_strlen(s1);
+	l = ft_strlen(s1) + ft_strlen(s2);
+	if (!s1 || !s2 || l < 0)
+		return (NULL);
+	str = ft_malloc(l + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	ct = -1;
+	while (++ct < l)
+	{
+		if (ct < l2)
+			str[ct] = s1[ct];
+		else
+			str[ct] = s2[ct - l2];
+	}
+	str[l] = '\0';
+	return (str);
 }

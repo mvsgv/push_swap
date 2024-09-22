@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:39:54 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 16:32:48 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:55:21 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	ra(t_stack **a, bool print)
 {
 	rotate(a);
 	if (!print)
-		ft_printf("ra/n");
+		ft_printf("ra\n");
 }
 
 void	rb(t_stack **b, bool print)
 {
 	rotate(b);
 	if (!print)
-		ft_printf("rb/n");
+		ft_printf("rb\n");
 }
 
 void	rr(t_stack **a, t_stack **b, bool print)
@@ -31,5 +31,5 @@ void	rr(t_stack **a, t_stack **b, bool print)
 	rotate(a);
 	rotate(b);
 	if (!print)
-		ft_printf("rr/n");
+		ft_printf("rr\n");
 }

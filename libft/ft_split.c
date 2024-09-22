@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:59:42 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 16:27:32 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:05:21 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_counter(char *s, char sep)
 
 	count = 0;
 	i = 0;
-	while (*s)
+	while (s[i])
 	{
 		while (s[i] == sep)
 			i++;

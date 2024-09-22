@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 09:49:01 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 17:40:37 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:01:59 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	if_stack_sorted(t_stack *stack)
 {
 	if (!stack)
-		return (1);
+		return (true);
 	while (stack->next)
 	{
 		if (stack->nbr > stack->next->nbr)
@@ -46,16 +46,26 @@ void	my_index(t_stack *stack)
 	}
 }
 
-void	find_target(t_stack *a, t_stack *b)
+void	find_target_a(t_stack *a, t_stack *b)
 {
 	t_stack	*new_b;
 	t_stack	*target;
 	int		match;
 
+	if (!b)
+	{
+		while (a)
+		{
+			a->target = NULL;
+			a = a->next;
+		}
+		return;
+	}
 	while (a)
 	{
 		match = INT_MIN;
 		new_b = b;
+		target = NULL;
 		while (new_b)
 		{
 			if (new_b->nbr < a->nbr && new_b->nbr > match)
@@ -65,7 +75,7 @@ void	find_target(t_stack *a, t_stack *b)
 			}
 			new_b = new_b->next;
 		}
-		if (match == INT_MIN)
+		if (!target)
 			a->target = find_max(b);
 		else
 			a->target = target;
@@ -97,7 +107,7 @@ void	init_nodes_a(t_stack *a, t_stack *b)
 {
 	my_index(a);
 	my_index(b);
-	find_target(a, b);
+	find_target_a(a, b);
 	cost_analysis(a, b);
 	cheapest_moves(a);
 }

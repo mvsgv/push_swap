@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 15:07:18 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 16:32:15 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:28:03 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,45 +36,86 @@ void	push(t_stack **dest, t_stack **src)
 	}
 }
 
-void	swap(t_stack **head)
+// void	swap(t_stack **head)
+// {
+// 	if (!*head || !(*head)->next)
+// 		return ;
+// 	*head = (*head)->next;
+// 	(*head)->prev->prev = *head;
+// 	(*head)->prev->prev = (*head)->next;
+// 	if ((*head)->next)
+// 		(*head)->next->prev = (*head)->prev;
+// 	(*head)->next = (*head)->prev;
+// 	(*head)->prev = NULL;
+// }
+void swap(t_stack **head)
 {
-	if (!*head || !(*head)->next)
-		return ;
-	*head = (*head)->next;
-	(*head)->prev->prev = *head;
-	(*head)->prev->prev = (*head)->next;
-	if ((*head)->next)
-		(*head)->next->prev = (*head)->prev;
-	(*head)->next = (*head)->prev;
-	(*head)->prev = NULL;
+    t_stack *first;
+    t_stack *second;
+
+    if (!*head || !(*head)->next)
+        return;
+    
+    first = *head;
+    second = first->next;
+
+    first->next = second->next;
+    if (second->next)
+        second->next->prev = first;
+
+    second->prev = NULL;
+    second->next = first;
+    first->prev = second;
+
+    *head = second;
 }
 
-void	rotate(t_stack **stack)
-{
-	t_stack	*last_node;
+// void	rotate(t_stack **stack)
+// {
+// 	t_stack	*last_node;
 
-	if (!*stack || !(*stack)->next)
-		return ;
-	last_node = stack_last(*stack);
-	last_node->next = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	last_node->next->prev = last_node;
-	last_node->next->next = NULL;
+// 	if (!*stack || !(*stack)->next)
+// 		return ;
+// 	last_node = stack_last(*stack);
+// 	last_node->next = *stack;
+// 	*stack = (*stack)->next;
+// 	(*stack)->prev = NULL;
+// 	last_node->next->prev = last_node;
+// 	last_node->next->next = NULL;
+// }
+void rotate(t_stack **stack)
+{
+    t_stack *last_node;
+    t_stack *first_node;
+
+    if (!*stack || !(*stack)->next)
+        return;
+
+    first_node = *stack;
+    last_node = stack_last(*stack);
+
+    *stack = first_node->next;
+    (*stack)->prev = NULL;
+    first_node->next = NULL;
+    last_node->next = first_node;
+    first_node->prev = last_node;
 }
 
 void	reverse_rotate(t_stack **stack)
 {
+	t_stack	*second_last_node;
 	t_stack	*last_node;
 
 	if (!*stack || !(*stack)->next)
 		return ;
 	last_node = stack_last(*stack);
-	last_node->prev->next = NULL;
-	last_node->next = *stack;
+	second_last_node = last_node->prev;
+	
+	second_last_node->next = NULL;
 	last_node->prev = NULL;
-	*stack = last_node;
-	last_node->next->prev = last_node;
+	last_node->next = *stack;
+	(*stack)->prev = last_node;
+	*stack= last_node;
 }
 
 void	sort_three(t_stack **a)

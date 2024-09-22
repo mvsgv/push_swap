@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 20:27:29 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 17:45:00 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:16:23 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 int	stack_len(t_stack *stack)
 {
 	int	count;
+	t_stack *tmp;
+
+	tmp = stack;
 
 	count = 0;
-	if (!stack)
+	if (!tmp)
 		return (0);
-	while (stack)
+	while (tmp)
 	{
-		stack = stack->next;
+		// ft_printf("nb : %d\n", tmp->nbr);
+		tmp = tmp->next;
 		count++;
+		// if (count >= 10)
+		// 	exit(1);
 	}
 	return (count);
 }
@@ -75,7 +81,7 @@ void	cheapest_moves(t_stack *stack)
 		if (stack->cost < cheapest_value)
 		{
 			cheapest_value = stack->cost;
-			cheapest_value = stack;
+			cheapest_node = stack;
 		}
 		stack = stack->next;
 	}
