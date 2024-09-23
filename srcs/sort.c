@@ -6,7 +6,7 @@
 /*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 09:54:13 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/16 15:46:12 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/23 09:15:18 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,46 +85,28 @@ void sort_stack(t_stack **a, t_stack **b)
     int len;
 
     len = stack_len(*a);
-    // ft_printf("Initial len: %d\n", len);
-    // ft_printf("Stack sorted status: %d\n", if_stack_sorted(*a));
-
     if (len > 3 && !if_stack_sorted(*a))
     {
-        // ft_printf("Inside first if loop\n");
         pb(b, a, false);
         len -= 1;
-        // ft_printf("Updated len: %d\n", len);
-    }
-	 if (len > 3 && !if_stack_sorted(*a))
+	}
+	if (len > 3 && !if_stack_sorted(*a))
     {
-        // ft_printf("Inside second if loop\n");
         pb(b, a, false);
         len -= 1;
-        // ft_printf("Updated len: %d\n", len);
     }
+	while (len > 3 && !if_stack_sorted(*a))
+	{
+		init_nodes_a(*a, *b);
+		move_a_to_b(a, b);
+		len -=1;
+	}
     sort_three(a);
-    // ft_printf("Inside after sort_three\n");
-    // print_stack(*b, "b");
 	while (*b)
     {
-		// ft_printf("Inside second while loop\n");
         init_nodes_b(*a, *b);
 	    move_b_to_a(a, b);
     }
     my_index(*a);
     min_on_top(a);
 }
-
-// void print_stack(t_stack *stack, char *stack_name)
-// {
-//     ft_printf("Stack %s: ", stack_name);
-//     while (stack)
-//     {
-//         ft_printf("%d -> ", stack->nbr);
-//         stack = stack->next;
-//     }
-//     ft_printf("NULL\n");
-// }
-
-// Use this before the while loop
-// print_stack(*b, "b");

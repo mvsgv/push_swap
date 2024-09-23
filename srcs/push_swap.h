@@ -6,7 +6,7 @@
 /*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:44:02 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/16 15:33:07 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/23 13:54:20 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void				free_errors(t_stack **a);
 void				my_index(t_stack *stack);
 
 void print_stack(t_stack *stack, char *stack_name);
+int	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
 

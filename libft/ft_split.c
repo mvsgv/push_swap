@@ -6,77 +6,110 @@
 /*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:59:42 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/13 16:05:21 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/23 14:01:22 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../srcs/push_swap.h"
 
-static int	ft_counter(char *s, char sep)
+static char	*free_palestine(char **c)
 {
-	int	count;
 	int	i;
 
-	count = 0;
 	i = 0;
-	while (s[i])
+	while (c[i] != NULL)
 	{
-		while (s[i] == sep)
-			i++;
-		while (s[i] != sep && s[i])
-			i++;
-		count += 1;
+		free(c[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+
+
+static int	number_of_words(char *string, char separator)
+{
+	int	index;
+	int	count;
+
+	index = 0;
+	count = 0;
+	while (string[index])
+	{
+		while (string[index] == separator && string[index])
+			index++;
+		if (string[index] != '\0')
+			count++;
+		while (string[index] != separator && string[index])
+			index++;
 	}
 	return (count);
 }
 
-static char	*ft_next_word(char *s, char c)
+static char	*word_len(char const *string, char separator)
 {
-	static int	cursor = 0;
-	char		*next_word;
-	int			len;
-	int			i;
+	int		firstINDEX;
+	int		secondINDEX;
+	int		lenght;
+	char	*temp;
 
-	len = 0;
-	i = 0;
-	while (s[cursor] == c)
-		cursor++;
-	while ((s[cursor + len] != c) && s[cursor + len])
-		len++;
-	next_word = malloc(sizeof(char) * (len + 1));
-	if (!next_word)
+	lenght = 0;
+	firstINDEX = 0;
+	secondINDEX = 0;
+	while(string[firstINDEX]!= separator && string[firstINDEX])
+	{
+		firstINDEX++;
+		lenght++;
+	}
+	temp = malloc(sizeof(char*)*(lenght + 1));
+	if (!temp)
 		return (NULL);
-	while (s[cursor] != c && s[cursor])
-		next_word[i++] = s[cursor++];
-	next_word[i] = '\0';
-	return (next_word);
+	while (secondINDEX < lenght)
+	{
+		temp[secondINDEX] = string[secondINDEX];
+		secondINDEX++;
+	}
+	temp[secondINDEX] = '\0';
+	return (temp);
+}
+
+static char	**make_tab(const char *s, char c, int nbr_words, char **news_s)
+{
+	int	i;
+	int	index;
+
+	i = -1;
+	index = 0;
+	while (s[index] && i < nbr_words)
+	{
+		while (s[index] == c && s[index])
+			index++;
+		if (s[index] != '\0')
+		{
+			news_s[++i] = word_len(&s[index], c);
+			if (news_s[i] == NULL)
+				return (free_palestine(news_s), free(news_s), NULL);
+		}
+		while (s[index] != c && s[index])
+			index++;
+	}
+	return (news_s);
 }
 
 char	**ft_split(char *s, char c)
 {
-	int		qtt_words;
-	char	**array;
-	int		i;
+	int		nbr_words;
+	char	**news_s;
 
-	i = 0;
-	qtt_words = ft_counter(s, c);
-	if (!qtt_words)
-		exit(1);
-	array = malloc(sizeof(char *) * (size_t)(qtt_words + 2));
-	if (!array)
+	if (!s)
 		return (NULL);
-	while (qtt_words-- >= 0)
-	{
-		if (i == 0)
-		{
-			array[i] = malloc(sizeof(char));
-			if (!array[i])
-				return (NULL);
-			array[i++][0] = '\0';
-			continue ;
-		}
-		array[i++] = ft_next_word(s, c);
-	}
-	array[i] = NULL;
-	return (array);
+	nbr_words = number_of_words(s, c) + 1;
+	news_s = (char **)malloc((nbr_words) * sizeof(char *));
+	if (!news_s)
+		return (NULL);
+	if (make_tab(s, c, nbr_words, news_s) == NULL)
+		return (NULL);
+	news_s[nbr_words - 1] = NULL;
+	// free(s);
+	return (news_s);
 }

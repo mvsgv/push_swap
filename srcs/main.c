@@ -6,7 +6,7 @@
 /*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:51:32 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/18 15:34:42 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/23 11:41:09 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	main(int argc, char **argv)
 	if (argc > 1) 
 	{
 		if (argc == 2 && argv[1][0] != '\0')
-
-			argv = ft_split(ft_strjoin("push_swap ", argv[1]), ' ');
+			argv = ft_split(argv[1], ' ');
 		init_stack_a(&a, argv + 1);
 		if (!if_stack_sorted(a))
 		{
@@ -36,13 +35,14 @@ int	main(int argc, char **argv)
 			else
 				sort_stack(&a, &b);
 		}
-		// system("leaks a.out");
-		// free_stack(&a);
+		// system("leaks push_swap");
+		free_stack(&a);
 		return (0);
 	}
 	else
 	{
-		// system("leaks a.out");
+		// system("leaks push_swap");
 		return 1;
 	}
 }
+

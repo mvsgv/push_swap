@@ -6,11 +6,20 @@
 /*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:26:16 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/18 15:28:30 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/23 07:37:58 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../srcs/push_swap.h"
+
+int	ft_strlen(const char *s)
+{
+	int i;
+	i = 0;
+	while(s[i])
+		i++;
+	return (i);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -33,28 +42,29 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (str[i++] - 48);
 	return (res * neg);
 }
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		l;
-	int		l2;
-	int		ct;
-	char	*str;
+	int		indent;
+	int		length_s1;
+	int		length_s2;
+	char	*string;
 
-	l2 = ft_strlen(s1);
-	l = ft_strlen(s1) + ft_strlen(s2);
-	if (!s1 || !s2 || l < 0)
-		return (NULL);
-	str = ft_malloc(l + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	ct = -1;
-	while (++ct < l)
+	if (s1 && s2)
 	{
-		if (ct < l2)
-			str[ct] = s1[ct];
-		else
-			str[ct] = s2[ct - l2];
+		length_s1 = ft_strlen(s1);
+		length_s2 = ft_strlen(s2);
+		string = (char *)malloc(sizeof(char) * (length_s1 + length_s2 + 1));
+		if (string == NULL)
+			return (NULL);
+		indent = -1;
+		while (s1[++indent])
+			string[indent] = s1[indent];
+		indent = -1;
+		while (s2[++indent])
+			string[length_s1 + indent] = s2[indent];
+		string[length_s1 + indent] = '\0';
+		return (string);
 	}
-	str[l] = '\0';
-	return (str);
+	return (NULL);
 }
