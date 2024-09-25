@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:12:32 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/16 15:53:04 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/24 15:39:29 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,11 @@ void	pa(t_stack **a, t_stack **b, bool print)
 		ft_printf("pa\n");
 }
 
-// void	pb(t_stack **a, t_stack **b, bool print)
-// {
-// 	push(b, a);
-// 	if (!print)
-// 		ft_printf("pb\n");
-// 		ft_printf("pb: Pushed element from a to b\n");
-// }
-
-void pb(t_stack **b, t_stack **a, bool print)
+void	pb(t_stack **b, t_stack **a, bool print)
 {
-    // ft_printf("Before pb: Top of a: %d, Top of b: %d\n",
-        // *a ? (*a)->nbr : -1, *b ? (*b)->nbr : -1);
-    push(b, a);
-    // ("After pb: Top of a: %d, Top of b: %d\n",
-    //  ft_printf   *a ? (*a)->nbr : -1, *b ? (*b)->nbr : -1);
-    if (!print)
-        ft_printf("pb\n");
+	push(b, a);
+	if (!print)
+		ft_printf("pb\n");
 }
 
 void	rra(t_stack **a, bool print)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:33:48 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/13 18:07:20 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/23 15:15:06 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	find_target_b(t_stack *a, t_stack *b)
 {
-	t_stack	*current_a; 
+	t_stack	*current_a;
 	t_stack	*target_node;
-	int			best_match_index;
+	int		best_match_index;
 
 	while (b)
 	{
@@ -24,7 +24,7 @@ void	find_target_b(t_stack *a, t_stack *b)
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->nbr > b->nbr 
+			if (current_a->nbr > b->nbr
 				&& current_a->nbr < best_match_index)
 			{
 				best_match_index = current_a->nbr;
@@ -48,7 +48,7 @@ void	move_a_to_b(t_stack **a, t_stack **b)
 	if (cheapest_node->above_divised && cheapest_node->target->above_divised)
 		rotate_both(a, b, cheapest_node);
 	else if (!(cheapest_node->above_divised)
-			&& !(cheapest_node->target->above_divised))
+		&& !(cheapest_node->target->above_divised))
 		rev_rot_both(a, b, cheapest_node);
 	prep_to_push(a, cheapest_node, 'a');
 	prep_to_push(b, cheapest_node->target, 'b');

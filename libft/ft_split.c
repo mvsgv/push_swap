@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:59:42 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/23 14:01:22 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/24 15:43:50 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static char	*free_palestine(char **c)
 	}
 	return (NULL);
 }
-
-
 
 static int	number_of_words(char *string, char separator)
 {
@@ -48,28 +46,28 @@ static int	number_of_words(char *string, char separator)
 
 static char	*word_len(char const *string, char separator)
 {
-	int		firstINDEX;
-	int		secondINDEX;
+	int		first;
+	int		second;
 	int		lenght;
 	char	*temp;
 
 	lenght = 0;
-	firstINDEX = 0;
-	secondINDEX = 0;
-	while(string[firstINDEX]!= separator && string[firstINDEX])
+	first = 0;
+	second = 0;
+	while (string[first] != separator && string[first])
 	{
-		firstINDEX++;
+		first++;
 		lenght++;
 	}
-	temp = malloc(sizeof(char*)*(lenght + 1));
+	temp = malloc(sizeof(char *) * (lenght + 1));
 	if (!temp)
 		return (NULL);
-	while (secondINDEX < lenght)
+	while (second < lenght)
 	{
-		temp[secondINDEX] = string[secondINDEX];
-		secondINDEX++;
+		temp[second] = string[second];
+		second++;
 	}
-	temp[secondINDEX] = '\0';
+	temp[second] = '\0';
 	return (temp);
 }
 
@@ -110,6 +108,5 @@ char	**ft_split(char *s, char c)
 	if (make_tab(s, c, nbr_words, news_s) == NULL)
 		return (NULL);
 	news_s[nbr_words - 1] = NULL;
-	// free(s);
 	return (news_s);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 09:54:13 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/23 09:15:18 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/24 15:38:25 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,61 +52,29 @@ void	rev_rot_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 	my_index(*b);
 }
 
-// void	sort_stack(t_stack **a, t_stack **b)
-// {
-// 	int	len;
-
-// 	len = stack_len(*a);
-// 	while (len > 3 && !if_stack_sorted(*a))
-// 	{
-// 			ft_printf("are you here ?");
-// 		pb(b, a, false);
-// 		len -= 1;
-// 	}
-// 	// if (len > 3 && !if_stack_sorted(*a))
-// 	// {
-// 	// 	init_nodes_a(*a, *b);
-// 	// 	move_a_to_b(a, b);
-// 	// 	len--;
-// 	// }
-// 	sort_three(a);
-// 		ft_printf("are you ?");
-// 	while (*b)
-// 	{
-// 		init_nodes_b(*a, *b);
-// 		move_b_to_a(a, b);
-// 	}
-// 	my_index(*a);
-// 	min_on_top(a);
-// }
-
-void sort_stack(t_stack **a, t_stack **b)
+void	sort_stack(t_stack **a, t_stack **b)
 {
-    int len;
+	int	len;
 
-    len = stack_len(*a);
-    if (len > 3 && !if_stack_sorted(*a))
-    {
-        pb(b, a, false);
-        len -= 1;
-	}
+	len = stack_len(*a);
 	if (len > 3 && !if_stack_sorted(*a))
-    {
-        pb(b, a, false);
-        len -= 1;
-    }
+		pb(b, a, false);
+	len -= 1;
+	if (len > 3 && !if_stack_sorted(*a))
+		pb(b, a, false);
+	len -= 1;
 	while (len > 3 && !if_stack_sorted(*a))
 	{
 		init_nodes_a(*a, *b);
 		move_a_to_b(a, b);
-		len -=1;
+		len -= 1;
 	}
-    sort_three(a);
+	sort_three(a);
 	while (*b)
-    {
-        init_nodes_b(*a, *b);
-	    move_b_to_a(a, b);
-    }
-    my_index(*a);
-    min_on_top(a);
+	{
+		init_nodes_b(*a, *b);
+		move_b_to_a(a, b);
+	}
+	my_index(*a);
+	min_on_top(a);
 }

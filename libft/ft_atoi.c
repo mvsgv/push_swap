@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:26:16 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/23 07:37:58 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/24 15:41:50 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }

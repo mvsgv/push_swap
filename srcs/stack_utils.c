@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 20:27:29 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/13 17:16:23 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/23 15:12:51 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 int	stack_len(t_stack *stack)
 {
-	int	count;
-	t_stack *tmp;
+	int		count;
+	t_stack	*tmp;
 
 	tmp = stack;
-
 	count = 0;
 	if (!tmp)
 		return (0);
 	while (tmp)
 	{
-		// ft_printf("nb : %d\n", tmp->nbr);
 		tmp = tmp->next;
 		count++;
-		// if (count >= 10)
-		// 	exit(1);
 	}
 	return (count);
 }

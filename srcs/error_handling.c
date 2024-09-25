@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:24:07 by mavissar          #+#    #+#             */
-/*   Updated: 2024/08/17 17:36:30 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:14:01 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 int	syntax_errors(char *str)
 {
-	if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
+	int	i;
+
+	i = 0;
+	if (!(str[i] == '+' || str[i] == '-' || (str[i] >= '0' && str[i] <= '9')))
 		return (1);
-	if ((*str == '+' || *str == '-') && !(str[1] >= '0' && str[1] <= '9'))
+	if ((str[i] == '+' || str[i] == '-') && !(str[1] >= '0' && str[1] <= '9'))
 		return (1);
-	while (*++str)
+	while (str[i])
 	{
-		if (!(*str >= '0' && *str <= '9'))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (1);
+		i++;
 	}
 	return (0);
 }
@@ -60,6 +64,6 @@ void	free_stack(t_stack **stack)
 void	free_errors(t_stack **a)
 {
 	free_stack(a);
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }

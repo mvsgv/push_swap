@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:44:02 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/23 13:54:20 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/25 11:47:55 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ t_stack				*stack_last(t_stack *stack);
 int					stack_len(t_stack *stack);
 t_stack				*find_min(t_stack *stack);
 t_stack				*find_max(t_stack *stack);
-int				ft_atoi(const char *str);
-void	find_target_b(t_stack *a, t_stack *b);
+int					ft_atoi(const char *str);
+void				find_target_a(t_stack *a, t_stack *b);
+void				find_target_b(t_stack *a, t_stack *b);
+void				cost_analysis(t_stack *a, t_stack *b);
 
 /*//errors//*/
 int					syntax_errors(char *str);
@@ -87,9 +89,8 @@ void				free_stack(t_stack **stack);
 void				free_errors(t_stack **a);
 void				my_index(t_stack *stack);
 
-void print_stack(t_stack *stack, char *stack_name);
-int	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
+void				print_stack(t_stack *stack, char *stack_name);
+int					ft_strlen(const char *s);
+char				*ft_strjoin(char const *s1, char const *s2);
 
 #endif
-

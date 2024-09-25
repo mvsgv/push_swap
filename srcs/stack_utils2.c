@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
+/*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 09:49:01 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/13 18:01:59 by mariameviss      ###   ########.fr       */
+/*   Updated: 2024/09/25 11:51:49 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,44 +46,42 @@ void	my_index(t_stack *stack)
 	}
 }
 
-void	find_target_a(t_stack *a, t_stack *b)
+t_stack	*find_target_in_b(t_stack *a, t_stack *b)
 {
 	t_stack	*new_b;
 	t_stack	*target;
 	int		match;
 
-	if (!b)
+	new_b = b;
+	target = NULL;
+	match = INT_MIN;
+	while (new_b)
 	{
-		while (a)
+		if (new_b->nbr < a->nbr && new_b->nbr > match)
 		{
-			a->target = NULL;
-			a = a->next;
+			match = new_b->nbr;
+			target = new_b;
 		}
-		return;
+		new_b = new_b->next;
 	}
+	if (!target)
+		target = find_max(b);
+	return (target);
+}
+
+void	find_target_a(t_stack *a, t_stack *b)
+{
 	while (a)
 	{
-		match = INT_MIN;
-		new_b = b;
-		target = NULL;
-		while (new_b)
-		{
-			if (new_b->nbr < a->nbr && new_b->nbr > match)
-			{
-				match = new_b->nbr;
-				target = new_b;
-			}
-			new_b = new_b->next;
-		}
-		if (!target)
-			a->target = find_max(b);
+		if (!b)
+			a->target = NULL;
 		else
-			a->target = target;
+			a->target = find_target_in_b(a, b);
 		a = a->next;
 	}
 }
 
-static void	cost_analysis(t_stack *a, t_stack *b)
+void	cost_analysis(t_stack *a, t_stack *b)
 {
 	int	len_a;
 	int	len_b;
@@ -101,13 +99,4 @@ static void	cost_analysis(t_stack *a, t_stack *b)
 			a->cost += len_b - (a->target->index);
 		a = a->next;
 	}
-}
-
-void	init_nodes_a(t_stack *a, t_stack *b)
-{
-	my_index(a);
-	my_index(b);
-	find_target_a(a, b);
-	cost_analysis(a, b);
-	cheapest_moves(a);
 }
