@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:24:07 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/25 13:14:01 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:00:34 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	syntax_errors(char *str)
 	int	i;
 
 	i = 0;
-	if (!(str[i] == '+' || str[i] == '-' || (str[i] >= '0' && str[i] <= '9')))
-		return (1);
-	if ((str[i] == '+' || str[i] == '-') && !(str[1] >= '0' && str[1] <= '9'))
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!str[i])
 		return (1);
 	while (str[i])
 	{

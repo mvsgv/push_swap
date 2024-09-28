@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 16:26:16 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/24 15:41:50 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:04:08 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../srcs/push_swap.h"
+#include <stdbool.h>
+#include <limits.h>
+#include <errno.h>
 
 int	ft_strlen(const char *s)
 {
@@ -22,26 +25,33 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int	i;
-	int	neg;
-	int	res;
+	int		i;
+	long	s;
+	long	res;
 
 	i = 0;
+	s = 1;
 	res = 0;
-	neg = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i] == '-')
-			neg *= -1;
-		i++;
+		if (str[i++] == '-')
+			s = -1;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
-		res = res * 10 + (str[i++] - 48);
-	return (res * neg);
+	{
+		res = (res * 10) + (str[i] - '0');
+		if ((res * s) > INT_MAX)
+			return (LONG_MAX);
+		if ((res * s) < INT_MIN)
+			return (LONG_MIN);
+		i++;
+	}
+	return (res * s);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)

@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 16:16:58 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/23 15:01:09 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:48:45 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	sa(t_stack **a, bool print)
 {
 	swap(a);
 	if (!print)
-		ft_printf("sa\n");
+		write(1, "sa\n", 3);
 }
 
 void	sb(t_stack **b, bool print)
 {
 	swap(b);
 	if (!print)
-		ft_printf("sb\n");
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **a, t_stack **b, bool print)
@@ -31,5 +31,5 @@ void	ss(t_stack **a, t_stack **b, bool print)
 	swap(a);
 	swap(b);
 	if (!print)
-		ft_printf("ss\n");
+		write(1, "ss\n", 3);
 }

@@ -25,7 +25,7 @@ OBJ = $(addprefix $(SRC_PATH), $(SRC:=.o))
 #LIBFT
 LBFT_PATH = ./libft/
 LBFT = 	ft_split \
-		ft_atoi \
+		ft_atol \
 		ft_printf \
 		ft_print_utilities \
 		ft_printf_utils 

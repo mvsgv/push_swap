@@ -6,25 +6,11 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:51:32 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/25 15:06:48 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:34:41 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../srcs/push_swap.h"
-#include <stdio.h>
-
-// void	printlist(t_stack *list)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (list)
-// 	{
-// 		ft_printf("[%d] : %d\n", i, list->nbr);
-// 		i++;
-// 		list = list->next;
-// 	}
-// }
 
 static void	exit_error_argv(t_stack **stack_a, t_stack **stack_b)
 {
@@ -76,5 +62,3 @@ int	main(int argc, char **argv)
 	else
 		return (1);
 }
-
-		// system("leaks push_swap");

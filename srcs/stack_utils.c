@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 20:27:29 by mavissar          #+#    #+#             */
-/*   Updated: 2024/09/23 15:12:51 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:01:43 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ void	cheapest_moves(t_stack *stack)
 
 void	init_stack_a(t_stack **a, char **argv)
 {
-	int	n;
-	int	i;
+	long	n;
+	int		i;
 
 	i = 0;
 	while (argv[i])
 	{
 		if (syntax_errors(argv[i]))
 			free_errors(a);
-		n = ft_atoi(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
+		n = ft_atol(argv[i]);
+		if (n == LONG_MAX || n == LONG_MIN || n > INT_MAX || n < INT_MIN)
 			free_errors(a);
 		if (dup_error(*a, (int)n))
 			free_errors(a);
